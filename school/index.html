@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script>
+		<script type="text/javascript" src="js/weui.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/weui.css" />
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
+		<style type="text/css">
+			.weui-tab {
+				display: fixed;
+				bottom: 0px;
+				position: absolute;
+				z-index: 555;
+				width: 100%;
+			}
+
+			.swiper-container {
+				width: 100%;
+
+			}
+
+			.swiper-slide img {
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="weui-tab">
+			<div class="weui-tab__panel">
+				<div class="weui-tab__content" style="display: block;">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide"><img src="images/swiper_1.png" /></div>
+							<div class="swiper-slide"><img src="images/swiper_2.png" /></div>
+							<div class="swiper-slide"><img src="images/swiper_3.png" /></div>
+						</div>
+						<!-- 如果需要分页器 -->
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+				<div class="weui-tab__content">2</div>
+				<div class="weui-tab__content">3</div>
+				<div class="weui-tab__content">4</div>
+			</div>
+			<div class="weui-tabbar">
+				<a href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
+					<img src="images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+					<p class="weui-tabbar__label">微信</p>
+				</a>
+				<a href="javascript:;" class="weui-tabbar__item">
+					<img src="images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+					<p class="weui-tabbar__label">通讯录</p>
+				</a>
+				<a href="javascript:;" class="weui-tabbar__item">
+					<img src="images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+					<p class="weui-tabbar__label">发现</p>
+				</a>
+				<a href="javascript:;" class="weui-tabbar__item">
+					<img src="images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+					<p class="weui-tabbar__label">我</p>
+				</a>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(".weui-tabbar a").click(function() {
+
+				var index = $(this).index();
+
+				// 底部的切换效果
+				$(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+
+				$(".weui-tab__panel .weui-tab__content").hide().eq(index).show();
+
+			});
+			var mySwiper = new Swiper('.swiper-container', {
+				loop: true, // 循环模式选项
+
+				// 如果需要分页器
+				pagination: {
+					el: '.swiper-pagination',
+				},
+			})
+		</script>
+	</body>
+</html>

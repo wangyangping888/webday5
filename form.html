@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title></title>
+		<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.3/weui.min.css">
+		<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.4/weui.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<style type="text/css">
+			input {
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<form id="form">
+			<div class="weui-cells">
+				<div class="weui-cell">
+					<div class="weui-cell__bd">
+						<input class="weui-input" type="text" placeholder="请输入手机号" required pattern="REG_NUMBER" />
+					</div>
+				</div>
+			</div>
+			<div class="weui-cells">
+				<div class="weui-cell">
+					<div class="weui-cell__bd">
+						<input class="weui-input" type="text" placeholder="请输入身份证号" required pattern="REG_IDNUM" />
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class="button-sp-area">
+			<a href="javascript:;" class="weui-btn weui-btn_primary">按钮</a>
+		</div>
+		<script type="text/javascript">
+			var btn = $(".weui-btn");
+			btn.click(function() {
+				weui.form.validate('#form', function(error) {
+					if (!error) {
+						var loading = weui.loading('提交中...');
+						setTimeout(function() {
+							loading.hide();
+							weui.toast('提交成功', 3000);
+						}, 1500);
+					}
+					// return true; // 当return true时，不会显示错误
+				}, {
+					regexp: {
+						IDNUM: /(?:^\d{15}$)|(?:^\d{18}$)|^\d{17}[\dXx]$/,
+						VCODE: /^.{4}$/,
+						NUMBER:/^1[3456789]\d{9}$/,
+					}
+				});
+			})
+		</script>
+	</body>
+</html>
